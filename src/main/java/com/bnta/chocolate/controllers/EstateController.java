@@ -35,4 +35,10 @@ public class EstateController {
 
         return new ResponseEntity<>(estate.get(), HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<Estate> addEstate(@RequestBody Estate estate) {
+        Estate newEstate = estateService.saveEstate(estate);
+        return new ResponseEntity<>(newEstate, HttpStatus.CREATED);
+    }
 }

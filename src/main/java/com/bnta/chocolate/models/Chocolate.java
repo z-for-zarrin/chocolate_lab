@@ -19,7 +19,7 @@ public class Chocolate {
     private int cocoaPercentage;
 
     @ManyToOne
-    @JoinColumn(name = "estate_id")
+    @JoinColumn(name = "estateId")
     @JsonIgnoreProperties({"chocolates"})
     private Estate estate;
 

@@ -1,6 +1,7 @@
 package com.bnta.chocolate.controllers;
 
 import com.bnta.chocolate.models.Chocolate;
+import com.bnta.chocolate.models.ChocolateDTO;
 import com.bnta.chocolate.services.ChocolateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,12 @@ public class ChocolateController {
         }
 
         return new ResponseEntity<>(chocolate.get(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Chocolate> addChocolate(@RequestBody ChocolateDTO chocolateDTO){
+        Chocolate newChocolate = chocolateService.addChocolateDTO(chocolateDTO);
+        return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
     }
 
 }
