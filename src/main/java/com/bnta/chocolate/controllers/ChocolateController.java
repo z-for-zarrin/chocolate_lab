@@ -18,8 +18,15 @@ public class ChocolateController {
     ChocolateService chocolateService;
 
     @GetMapping
-    public ResponseEntity<List<Chocolate>> getAllChocolates() {
-        List<Chocolate> chocolates = chocolateService.getAllChocolates();
+    public ResponseEntity<List<Chocolate>> getAllChocolates(
+            @RequestParam Optional<Integer> cocoaPercentage
+    ) {
+        List<Chocolate> chocolates;
+        if(cocoaPercentage.isPresent()){
+            chocolates = chocolateService.getChocolateByCocoaPercentage(cocoaPercentage.get());
+            return new ResponseEntity<>(chocolates, HttpStatus.OK);
+        }
+        chocolates = chocolateService.getAllChocolates();
         return new ResponseEntity<>(chocolates, HttpStatus.OK);
     }
 

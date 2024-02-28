@@ -27,4 +27,8 @@ public class ChocolateService {
         return chocolateRepository.findById(id);
     }
 
+    public List<Chocolate> getChocolateByCocoaPercentage(int cocoaPercentage) {
+        return chocolateRepository.findByCocoaPercentage(cocoaPercentage);
+    }
+
 }
